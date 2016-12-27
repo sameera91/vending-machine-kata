@@ -1,6 +1,6 @@
 class VendingMachine
 
-  attr_accessor :total_coin_value, :cola_quantity, :chips_quantity, :candy_quantity
+  attr_accessor :total_coin_value, :cola_quantity, :chips_quantity, :candy_quantity, :intial_change_value
 
   COLA = 1.00
   CHIPS = 0.50
@@ -8,6 +8,7 @@ class VendingMachine
 
   def initialize
     @total_coin_value = 0 
+    @initial_change_value = 5.00
     @cola_quantity = 10
     @chips_quantity = 10
     @candy_quantity = 10
@@ -16,11 +17,12 @@ class VendingMachine
   def insert_coin
     input = ""
     until input === "exit"
-      puts "Enter a coin. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product."
+      puts "Enter a coin. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned."
       input = gets.strip
       if input === "nickel" || input === "dime" || input === "quarter"
-        puts "valid coin."
         coin_weight_size(input)
+      elsif input === "return coins"
+        return_coins
       elsif input === "select product"
         select_product
       elsif input === "exit"
@@ -59,6 +61,15 @@ class VendingMachine
      end
    end
   end
+
+  def return_coins
+    if @total_coin_value != 0
+      @total_coin_value = 0
+    else
+      puts "No coins to return."
+    end
+  end
+
 
   def calculate_change(quantity, product)
     puts "THANK YOU."
