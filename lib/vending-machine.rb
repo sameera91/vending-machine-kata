@@ -39,22 +39,34 @@ class VendingMachine
       puts "Select a product. Valid options include: cola, chips or candy."
       input = gets.strip
       if input === "cola"
-        if @total_coin_value >= COLA
-          calculate_change(@cola_quantity, COLA)
+        if !sold_out?(@cola_quantity)
+          if @total_coin_value >= COLA
+            calculate_change(@cola_quantity, COLA)
+          else
+            puts "PRICE = #{COLA}"
+          end
         else
-          puts "PRICE = #{COLA}"
+          puts "This product is sold out. Please select another one."
         end
       elsif input === "chips"
-        if @total_coin_value >= CHIPS
-          calculate_change(@chips_quantity, CHIPS)
+        if !sold_out?(@chips_quantity)
+          if @total_coin_value >= CHIPS
+            calculate_change(@chips_quantity, CHIPS)
+          else
+            puts "PRICE = #{CHIPS}"
+          end
         else
-          puts "PRICE = #{CHIPS}"
+          puts "This product is sold out. Please select another one."
         end
       elsif input === "candy"
-        if @total_coin_value >= CANDY
-          calculate_change(@candy_quantity, CANDY)
+        if !sold_out?(@candy_quantity)
+          if @total_coin_value >= CANDY
+            calculate_change(@candy_quantity, CANDY)
+          else
+            puts "PRICE = #{CANDY}"
+          end
         else
-          puts "PRICE = #{CANDY}"
+          puts "This product is sold out. Please select another one."
         end
       else
         puts "Invalid product."
@@ -70,13 +82,20 @@ class VendingMachine
     end
   end
 
+  def sold_out?(product)
+    if product === 0
+      true
+    else 
+      false
+    end
+  end
 
   def calculate_change(quantity, product)
     puts "THANK YOU."
     quantity = quantity - 1
-    change_value = @total_coin_value - product
-    @total_coin_value = change_value
-    puts "Your change is: #{change_value}" 
+    coin_return = @total_coin_value - product
+    @total_coin_value = coin_return
+    puts "Your change is: #{coin_return}" 
   end
 
   def coin_weight_size(input)
