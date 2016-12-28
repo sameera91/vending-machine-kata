@@ -8,7 +8,7 @@ class VendingMachine
 
   def initialize
     @total_coin_value = 0 
-    @initial_change_value = 5.00
+    @initial_change_value = 3.00
     @cola_quantity = 10
     @chips_quantity = 10
     @candy_quantity = 10
@@ -17,7 +17,11 @@ class VendingMachine
   def insert_coin
     input = ""
     until input === "exit"
-      puts "Enter a coin. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned."
+      if @initial_change_value === 0
+        puts "EXACT CHANGE ONLY. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned."
+      else
+        puts "INSERT COIN. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned."
+      end
       input = gets.strip
       if input === "nickel" || input === "dime" || input === "quarter"
         coin_weight_size(input)
@@ -95,6 +99,7 @@ class VendingMachine
     quantity = quantity - 1
     coin_return = @total_coin_value - product
     @total_coin_value = coin_return
+    @intial_change_value = @initial_change_value - coin_return
     puts "Your change is: #{coin_return}" 
   end
 
@@ -124,7 +129,6 @@ class VendingMachine
         total_value(coin_value)
       end
     end
-
   end
 
   def total_value(coin_value)
