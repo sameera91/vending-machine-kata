@@ -58,6 +58,15 @@ describe './lib/vending-machine.rb' do
         expect(vendingmachine).to receive(:gets).and_return("exit")
         vendingmachine.insert_coin
       end
+
+      it 'tells customers when exact change is required' do
+        vendingmachine = VendingMachine.new
+        vendingmachine.instance_variable_set(:@initial_change_value, 0)
+        expect($stdout).to receive(:puts).with("EXACT CHANGE ONLY. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned.")
+        expect(vendingmachine).to receive(:gets).and_return("exit")
+        expect($stdout).to receive(:puts).with("bye.")
+        vendingmachine.insert_coin
+      end
     end
   end
 end

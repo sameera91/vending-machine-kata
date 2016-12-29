@@ -9,7 +9,7 @@ class VendingMachine
   def initialize
     @total_coin_value = 0 
     @initial_change_value = 3.00
-    @cola_quantity = 0
+    @cola_quantity = 10
     @chips_quantity = 10
     @candy_quantity = 10
   end
