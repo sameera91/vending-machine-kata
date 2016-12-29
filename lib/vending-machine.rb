@@ -9,7 +9,7 @@ class VendingMachine
   def initialize
     @total_coin_value = 0 
     @initial_change_value = 3.00
-    @cola_quantity = 10
+    @cola_quantity = 0
     @chips_quantity = 10
     @candy_quantity = 10
   end
@@ -50,7 +50,7 @@ class VendingMachine
             puts "PRICE = #{COLA}"
           end
         else
-          puts "This product is sold out. Please select another one."
+          puts "SOLD OUT. Please select another item."
         end
       elsif input === "chips"
         if !sold_out?(@chips_quantity)

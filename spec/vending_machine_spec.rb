@@ -44,6 +44,20 @@ describe './lib/vending-machine.rb' do
         expect($stdout).to receive(:puts).with("bye.")
         vendingmachine.insert_coin
       end
+
+      it 'tells customers when selected items is not available' do
+        vendingmachine = VendingMachine.new
+        vendingmachine.instance_variable_set(:@cola_quantity, 0)
+        expect($stdout).to receive(:puts).with("INSERT COIN. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned.").at_least(:twice)
+        expect(vendingmachine).to receive(:gets).and_return("select product")
+        expect($stdout).to receive(:puts).with("Select a product. Valid options include: cola, chips or candy.")
+        expect(vendingmachine).to receive(:gets).and_return("cola")
+        expect($stdout).to receive(:puts).with("SOLD OUT. Please select another item.")
+        expect(vendingmachine).to receive(:gets).and_return("exit")
+        expect($stdout).to receive(:puts).and_return("Invalid product.").at_least(:twice)
+        expect(vendingmachine).to receive(:gets).and_return("exit")
+        vendingmachine.insert_coin
+      end
     end
   end
 end
