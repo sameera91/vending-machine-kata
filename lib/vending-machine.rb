@@ -81,6 +81,7 @@ class VendingMachine
   def return_coins
     if @total_coin_value != 0
       @total_coin_value = 0
+      puts "Your coins have been returned."
     else
       puts "No coins to return."
     end
@@ -95,12 +96,11 @@ class VendingMachine
   end
 
   def calculate_change(quantity, product)
-    puts "THANK YOU."
     quantity = quantity - 1
     coin_return = @total_coin_value - product
     @total_coin_value = coin_return
     @intial_change_value = @initial_change_value - coin_return
-    puts "Your change is: #{coin_return}" 
+    puts "THANK YOU. Your change is: #{coin_return}" 
   end
 
   def coin_weight_size(input)
