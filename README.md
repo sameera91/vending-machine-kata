@@ -16,6 +16,7 @@ Install Ruby if not already installed, and then execute the following commands t
 3. $ ruby bin/vending-machine
 
 ```
+
 ```
 ## Running Tests 
 
