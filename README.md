@@ -11,9 +11,11 @@ Install Ruby if not already installed, and then execute the following commands t
 ```
 1. $ git clone https://github.com/sameera91/vending-machine-kata.git
 
-2. $ bundle install
+2. cd vending-machine-kata
 
-3. $ ruby bin/vending-machine
+3. $ bundle install
+
+4. $ ruby bin/vending-machine
 
 ```
 
@@ -22,9 +24,11 @@ Install Ruby if not already installed, and then execute the following commands t
 ```
 1. $ git clone https://github.com/sameera91/vending-machine-kata.git
 
-2. $ bundle install
+2. cd vending-machine-kata
 
-3. $ rspec
+3. $ bundle install
+
+4. $ rspec
 
 ```
 
