@@ -18,9 +18,9 @@ class VendingMachine
     input = ""
     until input === "exit"
       if @initial_change_value === 0
-        puts "EXACT CHANGE ONLY. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned."
+        puts "EXACT CHANGE ONLY. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you would like your coins to be returned. Enter 'exit' if you would like to exit."
       else
-        puts "INSERT COIN. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you want to your coins to be returned."
+        puts "INSERT COIN. Valid options include: nickel, dime, quarter. Enter 'select product' once you are ready to select a product. Enter 'return coins' if you would like to your coins to be returned. Enter 'exit' if you would like to exit."
       end
       input = gets.strip
       if input === "nickel" || input === "dime" || input === "quarter"
@@ -31,8 +31,8 @@ class VendingMachine
         select_product
       elsif input === "exit"
         puts "bye."
-      else
-        puts "invalid coin."
+      elsif input != "exit"
+        puts "Invalid coin."
       end
     end
   end
@@ -40,7 +40,7 @@ class VendingMachine
   def select_product
     input = ""
     until input === "exit"
-      puts "Select a product. Valid options include: cola, chips or candy."
+      puts "SELECT PRODUCT. Valid options include: cola, chips or candy. Enter exit if you would like to go back."
       input = gets.strip
       if input === "cola"
         if !sold_out?(@cola_quantity)
@@ -72,7 +72,7 @@ class VendingMachine
         else
           puts "This product is sold out. Please select another one."
         end
-      else
+      elsif input != "exit"
         puts "Invalid product."
      end
    end
