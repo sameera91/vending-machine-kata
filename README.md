@@ -17,9 +17,9 @@ Install Ruby if not already installed, and then execute the following commands t
 
 ```
 
-```
 ## Running Tests 
 
+```
 1. $ git clone https://github.com/sameera91/vending-machine-kata.git
 
 2. $ bundle install
