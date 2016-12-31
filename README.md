@@ -11,7 +11,7 @@ Install Ruby if not already installed, and then execute the following commands t
 ```
 1. $ git clone https://github.com/sameera91/vending-machine-kata.git
 
-2. cd vending-machine-kata
+2. $ cd vending-machine-kata
 
 3. $ bundle install
 
@@ -24,7 +24,7 @@ Install Ruby if not already installed, and then execute the following commands t
 ```
 1. $ git clone https://github.com/sameera91/vending-machine-kata.git
 
-2. cd vending-machine-kata
+2. $ cd vending-machine-kata
 
 3. $ bundle install
 
